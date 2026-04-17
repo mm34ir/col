@@ -34,7 +34,7 @@ async def start(client, message):
     await message.reply_text(text, reply_markup=keyboard)
 
 
-@colab_bot.on_message(filters.command("tupload") & filters.private)
+@colab_bot.on_message(filters.command("l") & filters.private)
 async def telegram_upload(client, message):
     global BOT, src_request_msg
     BOT.Mode.mode = "leech"
@@ -67,7 +67,7 @@ async def directory_upload(client, message):
     src_request_msg = await task_starter(message, text)
 
 
-@colab_bot.on_message(filters.command("ytupload") & filters.private)
+@colab_bot.on_message(filters.command("y") & filters.private)
 async def yt_upload(client, message):
     global BOT, src_request_msg
     BOT.Mode.mode = "leech"
