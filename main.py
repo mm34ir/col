@@ -14,8 +14,6 @@ API_HASH = ""  # @param {type: "string"}
 BOT_TOKEN = ""  # @param {type: "string"}
 USER_ID = 0  # @param {type: "integer"}
 DUMP_ID = 0  # @param {type: "integer"}
-JD_EMAIL = ""  # @param {type: "string"}
-JD_PASS = ""  # @param {type: "string"}
 
 
 import subprocess, time, json, shutil, os
@@ -69,11 +67,9 @@ if os.path.exists("/content/sample_data"):
 
 cmd = "git clone https://github.com/XronTrix10/Telegram-Leecher"
 proc = subprocess.run(cmd, shell=True)
-cmd = "apt update && apt install ffmpeg aria2 default-jre"
+cmd = "apt update && apt install ffmpeg aria2"
 proc = subprocess.run(cmd, shell=True)
 cmd = "pip3 install -r /content/Telegram-Leecher/requirements.txt"
-proc = subprocess.run(cmd, shell=True)
-cmd = "wget -q https://installer.jdownloader.org/JDownloader.jar -O /content/Telegram-Leecher/JDownloader.jar"
 proc = subprocess.run(cmd, shell=True)
 
 credentials = {
@@ -82,8 +78,6 @@ credentials = {
     "BOT_TOKEN": BOT_TOKEN,
     "USER_ID": USER_ID,
     "DUMP_ID": DUMP_ID,
-    "JD_EMAIL": JD_EMAIL,
-    "JD_PASS": JD_PASS,
 }
 
 with open('/content/Telegram-Leecher/credentials.json', 'w') as file:

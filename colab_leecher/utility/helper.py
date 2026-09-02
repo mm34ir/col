@@ -54,10 +54,6 @@ def is_ytdl_link(link):
 def is_telegram(link):
     return "t.me" in link
 
-def is_jdownloader(link):
-    from colab_leecher.utility.variables import BOT
-    return BOT.Mode.jdownloader
-
 def is_torrent(link):
     return "magnet" in link or "torrent" in link
 

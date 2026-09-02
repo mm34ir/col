@@ -11,7 +11,6 @@ from colab_leecher.downlader.terabox import terabox_download
 from colab_leecher.downlader.ytdl import YTDL_Status, get_YT_Name
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 from colab_leecher.downlader.aria2 import aria2_Download, get_Aria2c_Name
-from colab_leecher.downlader.jdownloader import jdownloader_Download, get_JD_Name
 from colab_leecher.downlader.telegram import TelegramDownload, media_Identifier
 from colab_leecher.utility.variables import (
     BOT,
@@ -31,7 +30,6 @@ from colab_leecher.utility.helper import (
     is_terabox,
     is_ytdl_link,
     is_telegram,
-    is_jdownloader,
 )
 from colab_leecher.downlader.gdrive import (
     build_service,
@@ -92,16 +90,6 @@ async def downloadManager(source, is_ytdl: bool):
                         print(f"Couldn't Update text ! Because: {e1}")
 
                     await terabox_download(link, i + 1)
-                elif is_jdownloader(link):
-                    jd_dn = f"<b>PLEASE WAIT ⌛</b>\n\n__Sending to JDownloader__\n\n<code>{link}</code>"
-                    try:
-                        await MSG.status_msg.edit_text(
-                            text=jd_dn + sysINFO(), reply_markup=keyboard()
-                        )
-                    except Exception as e1:
-                        print(f"Couldn't Update text ! Because: {e1}")
-
-                    await jdownloader_Download(link, i + 1)
                 else:
                     aria2_dn = f"<b>PLEASE WAIT ⌛</b>\n\n__Getting Download Info For__\n\n<code>{link}</code>"
                     try:
@@ -169,7 +157,5 @@ async def get_d_name(link: str):
         Messages.download_name = (
             "Don't Know 🥲 (Trying)"  # TODO: Get download name via megadl
         )
-    elif is_jdownloader(link):
-        Messages.download_name = get_JD_Name(link)
     else:
         Messages.download_name = get_Aria2c_Name(link)
