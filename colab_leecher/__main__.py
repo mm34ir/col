@@ -34,6 +34,30 @@ async def start(client, message):
     await message.reply_text(text, reply_markup=keyboard)
 
 
+
+@colab_bot.on_message(filters.command("jdl") & filters.private)
+async def jdl_upload(client, message):
+    global BOT, src_request_msg
+    BOT.Mode.mode = "leech"
+    BOT.Mode.ytdl = False
+    BOT.Mode.jdownloader = True
+
+    text = "<b>⚡ Send Me DOWNLOAD LINK(s) FOR JDOWNLOADER 🔗»</b>\n\n🦀 Follow the below pattern\n\n<code>https//linktofile1.mp4\nhttps//linktofile2.mp4\n[Custom name space.mp4]\n{Password for zipping}\n(Password for unzip)</code>"
+
+    src_request_msg = await task_starter(message, text)
+
+
+@colab_bot.on_message(filters.command("jdgdupload") & filters.private)
+async def jdgdupload(client, message):
+    global BOT, src_request_msg
+    BOT.Mode.mode = "mirror"
+    BOT.Mode.ytdl = False
+    BOT.Mode.jdownloader = True
+
+    text = "<b>⚡ Send Me DOWNLOAD LINK(s) FOR JDOWNLOADER 🔗»</b>\n\n🦀 Follow the below pattern\n\n<code>https//linktofile1.mp4\nhttps//linktofile2.mp4\n[Custom name space.mp4]\n{Password for zipping}\n(Password for unzip)</code>"
+
+    src_request_msg = await task_starter(message, text)
+
 @colab_bot.on_message(filters.command("l") & filters.private)
 async def telegram_upload(client, message):
     global BOT, src_request_msg

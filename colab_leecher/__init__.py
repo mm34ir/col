@@ -17,6 +17,8 @@ API_HASH = credentials["API_HASH"]
 BOT_TOKEN = credentials["BOT_TOKEN"]
 OWNER = credentials["USER_ID"]
 DUMP_ID = credentials["DUMP_ID"]
+JD_EMAIL = credentials.get("JD_EMAIL", "")
+JD_PASS = credentials.get("JD_PASS", "")
 
 
 logging.basicConfig(level=logging.INFO)
